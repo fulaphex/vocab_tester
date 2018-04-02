@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"encoding/csv"
 	"encoding/json"
+	"flag"
 	"fmt"
 	"io/ioutil"
 	"log"
@@ -84,25 +85,33 @@ func readCSV(filename string) [][]string {
 
 func main() {
 	records := readCSV("vocab.csv")
+	inv := flag.Bool("inv", false, "Inverse mode")
+	flag.Parse()
 
-	vocab := make(map[string]map[string]bool)
-	vocabEnglish := make(map[string][]string)
-	vocabSpanish := make([]string, 0)
+	queriesAnswers := make(map[string]map[string]bool)
+	answers := make(map[string][]string)
+	queries := make([]string, 0)
 	for _, row := range records {
-		spanish, english := row[0], row[1]
-		if vocab[spanish] == nil {
-			vocab[spanish] = make(map[string]bool)
-			vocabSpanish = append(vocabSpanish, spanish)
+		var query, answer string
+		if *inv == true {
+			query, answer = row[1], row[0]
+		} else {
+			query, answer = row[0], row[1]
 		}
-		vocab[spanish][english] = true
-		vocabEnglish[spanish] = append(vocabEnglish[spanish], english)
+		fmt.Printf("query: %s, answer: %s\n", query, answer)
+		if queriesAnswers[query] == nil {
+			queriesAnswers[query] = make(map[string]bool)
+			queries = append(queries, query)
+		}
+		queriesAnswers[query][answer] = true
+		answers[query] = append(answers[query], answer)
 	}
 	stdin := bufio.NewReader(os.Stdin)
 
 	scores, _ := loadScores("scores.json")
 
-	samples := make([]sample, len(vocabSpanish))
-	for i, q := range vocabSpanish {
+	samples := make([]sample, len(queries))
+	for i, q := range queries {
 		samples[i] = sample{scores[q], q}
 	}
 	sort.Slice(samples, func(i, j int) bool {
@@ -119,11 +128,11 @@ func main() {
 		os.Exit(0)
 	}()
 
-	for _, i := range rand.Perm(len(vocabSpanish)) {
-		spanish := vocabSpanish[i]
-		fmt.Printf("%s (%d): ", spanish, len(vocab[spanish]))
+	for _, i := range rand.Perm(len(queries)) {
+		query := queries[i]
+		fmt.Printf("%s (%d): ", query, len(queriesAnswers[query]))
 		stdin.ReadString('\n')
-		ls := vocabEnglish[spanish]
+		ls := answers[query]
 		for _, word := range ls[:len(ls)-1] {
 			fmt.Printf("%s | ", word)
 		}
@@ -134,7 +143,7 @@ func main() {
 		}
 		// for corrent answer increment the score
 		if ans {
-			scores[spanish]++
+			scores[query]++
 		}
 	}
 	saveScores("scores.json", scores)
