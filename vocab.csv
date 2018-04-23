@@ -20,11 +20,11 @@ la calle:street
 la lengua:language
 un poco de:a bit of
 teléfonico movil:mobile phone
-dirección:address
-dirección:direction
-arroba:@
-punto:.
-punto interrogativo:question mark
+la dirección:address
+la dirección:direction
+#arroba:@
+#punto:.
+#punto interrogativo:question mark
 en el norte de:in the north of
 en el sur de:in the south of
 en el oeste de:in the west of
@@ -60,7 +60,7 @@ siguiente:following
 la frase:sentence
 la frase:phrase
 comprar:to buy
-la casa:home
+la casa:home, house
 nuevo:new
 el cine:cinema
 la playa:beach
@@ -69,7 +69,7 @@ tomar:take (grab)
 tomar:take (medication)
 tomar:take (eat/drink)
 el tren:train
-salir:go out
+salir:to go out
 salir:leave
 la noche:night
 ir de compras:to go shopping
@@ -78,7 +78,7 @@ mañana:morning
 hacer:to do
 la compra:the purchase
 cambiar:to change
-movíl:cellphone
+#movíl:cellphone
 movíl:mobile (adj)
 visitar:to visit
 venir:to come
@@ -248,8 +248,7 @@ almorzar:to eat lunch
 el almuerzo:lunch
 cenar:to eat dinner
 la cena:dinner
-también:also
-también:too
+también:too (also)
 agradable:nice
 normalmente:normally
 normalmente:usually
@@ -289,7 +288,7 @@ o:or
 la sopa:soup
 la ensalada:salad
 siempre:always
-demasiado:too
+demasiado:too (good)
 demasiado:too much
 el tenedor:fork
 la cuchara:spoon
@@ -306,8 +305,8 @@ detrás de:behind
 encima:on
 encima:on top
 encima:above
-el reloj:watch
-el reloj:clock
+el reloj:a watch
+el reloj:a clock
 meter:to put
 sin:without
 el radiador:radiator
@@ -337,3 +336,7 @@ octubre:October
 noviembre:November
 deciembre:December
 dos de marzo de 2017:March 2, 2017
+estupendo:great
+estupendo:wonderful
+fatal:very bad, horrible
+fenomenal:phenomenal

@@ -8,36 +8,42 @@ import (
 	"fmt"
 	"io/ioutil"
 	"log"
+	"math"
 	"math/rand"
 	"os"
 	"os/signal"
 	"sort"
 	"strings"
 	"syscall"
+	"time"
 )
 
 type sample struct {
-	score int
+	score float64
 	query string
 }
 
-func loadScores(scorePath string) (map[string]int, error) {
+func loadScores(scorePath string) (map[string]float64, error) {
 	if _, err := os.Stat(scorePath); os.IsNotExist(err) {
-		return make(map[string]int), nil
+		return make(map[string]float64), nil
 	}
 	bytes, err := ioutil.ReadFile(scorePath)
 	if err != nil {
 		return nil, err
 	}
-	res := make(map[string]int)
+	res := make(map[string]float64)
 	err = json.Unmarshal(bytes, &res)
 	if err != nil {
 		return nil, err
 	}
+	for i := range res {
+		res[i] = math.Max(res[i]+rand.Float64()*0.01, 0)
+	}
 	return res, nil
 }
 
-func saveScores(scorePath string, score map[string]int) error {
+func saveScores(scorePath string, score map[string]float64) error {
+	fmt.Println("\ninterrupt received, saving")
 	outFile, err := os.Create("scores.json")
 	if err != nil {
 		return err
@@ -98,7 +104,6 @@ func main() {
 		} else {
 			query, answer = row[0], row[1]
 		}
-		fmt.Printf("query: %s, answer: %s\n", query, answer)
 		if queriesAnswers[query] == nil {
 			queriesAnswers[query] = make(map[string]bool)
 			queries = append(queries, query)
@@ -111,12 +116,15 @@ func main() {
 	scores, _ := loadScores("scores.json")
 
 	samples := make([]sample, len(queries))
-	for i, q := range queries {
-		samples[i] = sample{scores[q], q}
+	it := 0
+	for _, q := range queries {
+		if scores[q] < 2 {
+			samples[it] = sample{scores[q], q}
+			it++
+		}
 	}
-	sort.Slice(samples, func(i, j int) bool {
-		return samples[i].score < samples[j].score
-	})
+	samples = samples[:it]
+	queries = nil
 
 	// create a channel waiting for the SIGTERM (ctrl + c)
 	// catch it, save scores to json and quit nicely
@@ -128,8 +136,33 @@ func main() {
 		os.Exit(0)
 	}()
 
-	for _, i := range rand.Perm(len(queries)) {
-		query := queries[i]
+	rand.Seed(int64(time.Now().Nanosecond()))
+
+	// mode := "random"
+	mode := "weakest first"
+	var perm []int
+	if mode == "random" {
+		perm = rand.Perm(len(samples))
+	} else if mode == "weakest first" {
+		sort.Slice(samples, func(i, j int) bool {
+			return samples[i].score < samples[j].score
+		})
+	} else {
+		panic("unsupported mode")
+	}
+
+	fmt.Printf("%d words to learn\n", len(samples))
+
+	var query string
+	for i := 0; i < len(samples); i++ {
+		if mode == "random" {
+			query = samples[perm[i]].query
+		} else if mode == "weakest first" {
+			query = samples[i].query
+		} else {
+			panic("unsupported mode")
+		}
+		scores[query] -= 0.1
 		fmt.Printf("%s (%d): ", query, len(queriesAnswers[query]))
 		stdin.ReadString('\n')
 		ls := answers[query]
@@ -145,6 +178,8 @@ func main() {
 		if ans {
 			scores[query]++
 		}
+		fmt.Println()
 	}
+
 	saveScores("scores.json", scores)
 }
