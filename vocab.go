@@ -18,6 +18,8 @@ import (
 	"time"
 )
 
+const scoreDecay = 0.2
+
 type sample struct {
 	score float64
 	query string
@@ -43,7 +45,7 @@ func loadScores(scorePath string) (map[string]float64, error) {
 }
 
 func saveScores(scorePath string, score map[string]float64) error {
-	fmt.Println("\ninterrupt received, saving")
+	fmt.Println("\nsaving")
 	outFile, err := os.Create("scores.json")
 	if err != nil {
 		return err
@@ -121,6 +123,13 @@ func main() {
 		if scores[q] < 2 {
 			samples[it] = sample{scores[q], q}
 			it++
+		} else {
+			// TODO: defer it to the end, if all words were checked
+			fmt.Println(q)
+			scores[q] -= scoreDecay
+		}
+		if scores[q] < 0 {
+			scores[q] = 0
 		}
 	}
 	samples = samples[:it]
@@ -162,7 +171,7 @@ func main() {
 		} else {
 			panic("unsupported mode")
 		}
-		scores[query] -= 0.1
+		scores[query] -= scoreDecay
 		fmt.Printf("%s (%d): ", query, len(queriesAnswers[query]))
 		stdin.ReadString('\n')
 		ls := answers[query]

@@ -19,12 +19,12 @@ vivir:to live
 la calle:street
 la lengua:language
 un poco de:a bit of
-teléfonico movil:mobile phone
+el teléfono móvil:mobile phone
 la dirección:address
 la dirección:direction
-#arroba:@
-#punto:.
-#punto interrogativo:question mark
+el arroba:@
+el punto:.
+el punto interrogativo:question mark
 en el norte de:in the north of
 en el sur de:in the south of
 en el oeste de:in the west of
@@ -46,7 +46,7 @@ transformarse:to be transformed
 esto:this
 pasar:happen
 igual:equal
-igual:the same
+igual:same
 el verbo:the verb
 pensar:to think
 sentir:to feel
@@ -73,13 +73,13 @@ salir:to go out
 salir:leave
 la noche:night
 ir de compras:to go shopping
-mañana:tomorrow
-mañana:morning
+la mañana:tomorrow
+la mañana:morning
 hacer:to do
 la compra:the purchase
 cambiar:to change
-#movíl:cellphone
-movíl:mobile (adj)
+el móvil:cellphone
+móvil:mobile (adj)
 visitar:to visit
 venir:to come
 el momento:moment
@@ -114,7 +114,7 @@ rubio:blond (adj)
 el rubio:blonde man
 la rubia:blonde woman
 informático:computer scientist
-programador:programmer
+el programador:programmer
 el ordenador:computer
 los Estados Unidos:USA
 los Estados Unidos de América:USA
@@ -163,7 +163,7 @@ el hermano:brother
 la hermana:sister
 el médico:doctor (m)
 la médica:doctor (f)
-medíco:medical
+médico:medical
 la experiencia:experience
 lo siento:I'm sorry
 cerrar:to close
@@ -198,15 +198,15 @@ la terraza:roof
 eso:that
 por:because of
 por:by (place)
-la luz:light (n)
+la luz:the light
 el dormitorio:bedroom
 más grande:biggest
 el piso:apartment
 la puerta:door
 al final de:at the end of
-el passilo:corridor
-el passilo:hall
-el passilo:aisle (in store)
+el pasillo:corridor
+el pasillo:hall
+el pasillo:aisle (in store)
 la cama:bed
 al lado de:beside
 hay:be-exist
@@ -338,5 +338,6 @@ deciembre:December
 dos de marzo de 2017:March 2, 2017
 estupendo:great
 estupendo:wonderful
-fatal:very bad, horrible
+fatal:terrible, awful
 fenomenal:phenomenal
+ver la televisión:to watch TV
