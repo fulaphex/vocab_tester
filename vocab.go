@@ -125,7 +125,7 @@ func main() {
 			it++
 		} else {
 			// TODO: defer it to the end, if all words were checked
-			fmt.Println(q)
+			// fmt.Println(q)
 			scores[q] -= scoreDecay
 		}
 		if scores[q] < 0 {
