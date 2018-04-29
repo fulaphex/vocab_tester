@@ -123,8 +123,8 @@ la secretaría:secretary
 expresar:to express
 los deberes:homework
 los deberes:duties
-el deber:duty
-el uso:use
+el deber:the duty
+el uso:the use
 mucho:a lot of
 mucho:much
 mucho:many
@@ -346,21 +346,21 @@ gustar:to like
 molestar:to bother
 molestar:to interrupt
 molestar:to get annoyed
-el asco:disgust
-el miedo:fear
-la risa:laughter
-la pena:shame
-la pena:pity
-la rabia:anger
-la grima:disgust
+el asco:the disgust
+el miedo:the fear
+la risa:the laughter
+la pena:the shame
+la pena:the pity
+la rabia:the anger
+la grima:the disgust
 a mi me da asco:it disgusts me
-a ti te da asco: it disgusts you
-a él le da asco: it disgusts him
-a ella le da asco: it disgusts her
+a ti te da asco:it disgusts you
+a él le da asco:it disgusts him
+a ella le da asco:it disgusts her
 a nosotros nos dan asco:it disgusts us
 a vosotros os dan asco:it disgusts you (plural)
-a ellos les dan asco:it disgusts you (plural)
-a ellas les dan asco:it disgusts you (plural)
+a ellos les dan asco:it disgusts them (male/mixed)
+a ellas les dan asco:it disgusts them (female on;y)
 dar asco:to disgust sb
 dar miedo:to frighten sb
 dar risa:to make sb laugh
@@ -379,14 +379,14 @@ la llave:a switch (e.g. light switch)
 me pone nervioso:makes me mad
 te pone triste:makes you sad
 le pone de buen humor:makes him/her be in a good mood
-nos ponen de mual humor: makes us be in a bad mood
+nos ponen de mal humor:makes us be in a bad mood
 os ponen negro:makes you (plural) angry
 cinco menos cuarto:quarter to five
 despartarse:to wake up
 levantarse:to get up
 volver:to return, to be back
 vuelvo a casa:I return home
-vuelvo, vuelves, vuelve, volvemos, volves, vuelven:return (conjugation)
+vuelvo, vuelves, vuelve, volvemos, volvéis, vuelven:return (conjugation)
 acostarse:to go to bed
 dormirse:to fall alseep
 dormir:sleep
@@ -485,3 +485,8 @@ morir, muerto:to die (past participle)
 ducharse:to take shower
 oír:to hear
 oye cómo va:hey, how it's going
+encantado:pleased to meet you
+fácil:easy
+difícil:difficult
+sediento:thirsty
+el ayer:yesterday
