@@ -18,7 +18,7 @@ import (
 	"time"
 )
 
-const scoreDecay = 0.2
+const scoreDecay = 0.1
 
 type sample struct {
 	score float64
@@ -39,7 +39,7 @@ func loadScores(scorePath string) (map[string]float64, error) {
 		return nil, err
 	}
 	for i := range res {
-		res[i] = math.Max(res[i]+rand.Float64()*0.01, 0)
+		res[i] = res[i] + rand.Float64()*0.01
 	}
 	return res, nil
 }
@@ -49,6 +49,9 @@ func saveScores(scorePath string, score map[string]float64) error {
 	outFile, err := os.Create("scores.json")
 	if err != nil {
 		return err
+	}
+	for i := range score {
+		score[i] = math.Max(score[i], 0)
 	}
 	defer outFile.Close()
 	jsonEnc := json.NewEncoder(outFile)
@@ -186,7 +189,9 @@ func main() {
 		// for corrent answer increment the score
 		if ans {
 			scores[query]++
-		}
+		} else {
+            scores[query] -= 0.5
+        }
 		fmt.Println()
 	}
 
