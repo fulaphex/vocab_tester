@@ -93,7 +93,7 @@ bien:well
 bien:good
 la vacación:vacation
 la vacación:holiday
-las vacaciónes:vacations
+las vacaciones:vacations
 el café:coffee
 la leche:milk
 el periodista:journalist (m)
@@ -345,7 +345,7 @@ encantar:to love
 gustar:to like
 molestar:to bother
 molestar:to interrupt
-molestar:to get annoyed
+molestar:to annoy
 el asco:the disgust
 el miedo:the fear
 la risa:the laughter
@@ -357,10 +357,10 @@ a mi me da asco:it disgusts me
 a ti te da asco:it disgusts you
 a él le da asco:it disgusts him
 a ella le da asco:it disgusts her
-a nosotros nos dan asco:it disgusts us
-a vosotros os dan asco:it disgusts you (plural)
-a ellos les dan asco:it disgusts them (male/mixed)
-a ellas les dan asco:it disgusts them (female only)
+a nosotros nos da asco:it disgusts us
+a vosotros os da asco:it disgusts you (plural)
+a ellos les da asco:it disgusts them (male/mixed)
+a ellas les da asco:it disgusts them (female only)
 dar asco:to disgust sb
 dar miedo:to frighten sb
 dar risa:to make sb laugh
@@ -379,8 +379,8 @@ la llave:a switch (e.g. light switch)
 me pone nervioso:makes me mad
 te pone triste:makes you sad
 le pone de buen humor:makes him/her be in a good mood
-nos ponen de mal humor:makes us be in a bad mood
-os ponen negro:makes you (plural) angry
+nos pone de mal humor:makes us be in a bad mood
+os pone negro:makes you (plural) angry
 cinco menos cuarto:quarter to five
 despartarse:to wake up
 levantarse:to get up
@@ -493,5 +493,5 @@ el ayer:yesterday
 la palabra:a word
 pongo, pones, pone, ponemos, ponéis, ponen:to put (conjugation)
 pasado mañana:day after tomorrow
-muero, mueres, muere, moremos, morís, mueren:to die (conjugation)
+muero, mueres, muere, morimos, morís, mueren:to die (conjugation)
 
